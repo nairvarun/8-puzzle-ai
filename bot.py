@@ -54,7 +54,7 @@ def get_ai_move_random(board, empty_pos):
 	return best_move
 
 
-# returns the best move it finds using just a simple huristic function for the ai.
+# returns the best move it finds using just a simple heuristic function for the ai.
 def get_ai_move_heuristic_func(board, goal_state, empty_pos):
 	print_board(board)
 
