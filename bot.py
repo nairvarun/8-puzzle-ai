@@ -1,4 +1,15 @@
+# todo:
+	# add ai part
+	# add readme
+	# find good license and add it
+
+# region imports
 import random
+#endregion
+
+# region function definitions
+
+# prints game board.
 
 
 def print_board(board):
@@ -10,6 +21,8 @@ def print_board(board):
 	|%s|%s|%s|
 	''' % (board[1], board[2], board[3], board[4], board[5], board[6], board[7], board[8], board[9])
 	print(b)
+
+# returns list of valid moves.
 
 
 def get_valid_moves(board, empty_pos):
@@ -34,6 +47,8 @@ def get_valid_moves(board, empty_pos):
 	else:
 		print('invalid move')
 		print_board(board)
+
+# if entered move is valid, makes move.
 
 
 def make_move(board):
@@ -66,8 +81,52 @@ def make_move(board):
 	else:
 		print("invalid move")
 
+# game loop
+
+
+def start_game(board):
+
+	# dictionary 'goal_state' represents the main 8 puzzle board
+	goal_state = board
+
+	#shuffles the board for the initial state
+	k = list(board.keys())
+	v = list(board.values())
+	random.shuffle(v)
+
+	# assigns the shuffled values to the board
+	board = {k[i]: v[i] for i in range(len(k))}
+
+	print('========================')
+	print('initial state:')
+	print_board(board)
+	print('goal state:')
+	print_board(goal_state)
+	print('========================')
+
+	# board = {
+	# 1: 1,
+	# 2: 2,
+	# 3: 3,
+	# 4: 4,
+	# 5: 5,
+	# 6: 6,
+	# 7: 7,
+	# 8: ' ',
+	# 9: 8
+	# }
+
+	while board != goal_state:
+		make_move(board)
+
+	print_board(board)
+	print('CONGRATULATIONS!!! you won!!')
+
+# main function
+
 
 def main():
+
 	# dictionary 'board' represents the main 8 puzzle board
 	board = {
 		1: 1,
@@ -81,37 +140,10 @@ def main():
 		9: ' '
 	}
 
-	goal_state = board
+	# starts the game
+	start_game(board)
 
-	k = list(board.keys())
-	v = list(board.values())
-	random.shuffle(v)
-
-	board = {k[i]: v[i] for i in range(len(k))}
-
-	print('========================')
-	print('initial state:')
-	print_board(board)
-	print('goal state:')
-	print_board(goal_state)
-	print('========================')
-
-	# board = {
-	# 	1: 1,
-	# 	2: 2,
-	# 	3: 3,
-	# 	4: 4,
-	# 	5: 5,
-	# 	6: 6,
-	# 	7: 7,
-	# 	8: ' ',
-	# 	9: 8
-	# }
-
-	while board != goal_state:
-		make_move(board)
-	print_board(board)
-	print('CONGRATULATIONS!!! you won!!')
+#endregion
 
 
 if __name__ == '__main__':
