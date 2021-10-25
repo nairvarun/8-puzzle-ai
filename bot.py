@@ -21,6 +21,20 @@ def print_board(board):
 	''' % (board[1], board[2], board[3], board[4], board[5], board[6], board[7], board[8], board[9])
 	print(b)
 
+# check whether the generated initial state is solvable.
+def is_solvable(board):
+	val = list(board.values())
+	val.remove(' ')
+	inv = 0
+	for i in range(len(val)-1):
+		for j in range(i+1, len(val)):
+			if val[i] > val[j]:
+				inv += 1
+	if inv % 2 == 0:
+		return True
+	else:
+		return False
+
 
 # returns list of valid moves.
 def get_valid_moves(board, empty_pos):
@@ -113,19 +127,26 @@ def make_move(move, board, empty_pos):
 		print("invalid move")
 
 
-# game loop
+# game loop.
 def start_game(board):
 
-	# dictionary 'goal_state' represents the main 8 puzzle board
+	# dictionary 'goal_state' represents the main 8 puzzle board.
 	goal_state = board
 
-	#shuffles the board for the initial state
+	#shuffles the board for the initial state.
 	k = list(board.keys())
 	v = list(board.values())
-	random.shuffle(v)
 
-	# assigns the shuffled values to the board
-	board = {k[i]: v[i] for i in range(len(k))}
+	while True:
+		# print('generated unsolvable board')
+		random.shuffle(v)
+		# assigns the shuffled values to the board.
+		board = {k[i]: v[i] for i in range(len(k))}
+		# breaks out of the loop if the generated initial state is solvable.
+		if is_solvable(board) == True:
+			break
+
+
 
 	print('========================')
 	print('initial state:')
@@ -154,18 +175,20 @@ def start_game(board):
 
 		# region for humans: 
 
-		move = get_human_move(board, empty_pos)
-		while move == None:
+		while True:
 			move = get_human_move(board, empty_pos)
+			if move != None:
+				break
+
 
 		# endregion
 		
 		# region for ai:
 
-		# random move
+		# random move.
 		# move = get_ai_move_random(board, empty_pos)
 		
-		# unsing only heuristic function 
+		# unsing only heuristic function. 
 		# move = get_ai_move_heuristic_func(board, goal_state, empty_pos)
 
 		# endregion
@@ -175,10 +198,10 @@ def start_game(board):
 	print_board(board)
 	print('CONGRATULATIONS!!! you won!!')
 
-# main function
+# main function.
 def main():
 
-	# dictionary 'board' represents the main 8 puzzle board
+	# dictionary 'board' represents the main 8 puzzle board.
 	board = {
 		1: 1,
 		2: 2,
@@ -191,7 +214,7 @@ def main():
 		9: ' '
 	}
 
-	# starts the game
+	# starts the game.
 	start_game(board)
 
 #endregion
