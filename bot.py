@@ -20,6 +20,7 @@ def print_board(board):
 	''' % (board[1], board[2], board[3], board[4], board[5], board[6], board[7], board[8], board[9])
 	print(b)
 
+
 # check whether the generated initial state is solvable.
 def is_solvable(board):
 	val = list(board.values())
@@ -144,8 +145,6 @@ def start_game(board):
 		# breaks out of the loop if the generated initial state is solvable.
 		if is_solvable(board) == True:
 			break
-
-
 
 	print('========================')
 	print('initial state:')
