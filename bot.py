@@ -10,8 +10,6 @@ import random
 # region function definitions
 
 # prints game board.
-
-
 def print_board(board):
 	b = '''
 	|%s|%s|%s|
@@ -23,8 +21,6 @@ def print_board(board):
 	print(b)
 
 # returns list of valid moves.
-
-
 def get_valid_moves(board, empty_pos):
 	if board[empty_pos] == board[1]:
 		return ('s', 'd')
@@ -49,8 +45,6 @@ def get_valid_moves(board, empty_pos):
 		print_board(board)
 
 # if entered move is valid, makes move.
-
-
 def make_move(board):
 	empty_pos = list(board.keys())[list(board.values()).index(' ')]
 	valid_moves = get_valid_moves(board, empty_pos)
@@ -82,8 +76,6 @@ def make_move(board):
 		print("invalid move")
 
 # game loop
-
-
 def start_game(board):
 
 	# dictionary 'goal_state' represents the main 8 puzzle board
@@ -123,8 +115,6 @@ def start_game(board):
 	print('CONGRATULATIONS!!! you won!!')
 
 # main function
-
-
 def main():
 
 	# dictionary 'board' represents the main 8 puzzle board
