@@ -1,5 +1,6 @@
 # todo:
-	# add ai part
+	# check if generated inital state is solvable (https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/)
+	# add proper ai part
 	# add readme
 	# find good license and add it
 
