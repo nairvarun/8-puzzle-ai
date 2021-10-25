@@ -1,3 +1,6 @@
+import random
+
+
 def print_board(board):
 	b = '''
 	|%s|%s|%s|
@@ -5,7 +8,7 @@ def print_board(board):
 	|%s|%s|%s|
 	--+-+--
 	|%s|%s|%s|
-	'''%(board[1], board[2], board[3], board[4], board[5], board[6], board[7], board[8], board[9])
+	''' % (board[1], board[2], board[3], board[4], board[5], board[6], board[7], board[8], board[9])
 	print(b)
 
 
@@ -30,61 +33,42 @@ def get_valid_moves(board, empty_pos):
 		return ('w', 'a')
 	else:
 		print('invalid move')
-		print('board[9]:', board[9])
-		make_move(board)
-
+		print_board(board)
 
 
 def make_move(board):
-
-	move = input('w = up \ns = down \na = left \nd = right \nyour move: ')
-
 	empty_pos = list(board.keys())[list(board.values()).index(' ')]
-
-	print('empty_pos:', empty_pos)
-
 	valid_moves = get_valid_moves(board, empty_pos)
+
+	print_board(board)
+	move = input('w = up \ns = down \na = left \nd = right \nyour move: ')
 
 	if move == 'w':
 		if move in valid_moves:
 			board[empty_pos], board[empty_pos-3] = board[empty_pos-3], board[empty_pos]
-			print_board(board)
 		else:
 			print("invalid move")
-			print('empty_pos =', empty_pos)
-			print(valid_moves)
-	if move == 's':
+	elif move == 's':
 		if move in valid_moves:
 			board[empty_pos], board[empty_pos+3] = board[empty_pos+3], board[empty_pos]
-			print_board(board)
 		else:
 			print("invalid move")
-			print('empty_pos =', empty_pos)
-			print(valid_moves)
-	if move == 'a':
+	elif move == 'a':
 		if move in valid_moves:
 			board[empty_pos], board[empty_pos-1] = board[empty_pos-1], board[empty_pos]
-			print_board(board)
 		else:
 			print("invalid move")
-			print(empty_pos-1)
-			print('empty_pos =', empty_pos)
-			print(valid_moves)
-	if move == 'd':
+	elif move == 'd':
 		if move in valid_moves:
 			board[empty_pos], board[empty_pos+1] = board[empty_pos+1], board[empty_pos]
-			print_board(board)
 		else:
 			print("invalid move")
-			print('empty_pos =', empty_pos)
-			print(valid_moves)
-
-
-
+	else:
+		print("invalid move")
 
 
 def main():
-	# dictionary 'board' represents the main 8 puzzle board 
+	# dictionary 'board' represents the main 8 puzzle board
 	board = {
 		1: 1,
 		2: 2,
@@ -96,14 +80,39 @@ def main():
 		8: 8,
 		9: ' '
 	}
-    
+
+	goal_state = board
+
+	k = list(board.keys())
+	v = list(board.values())
+	random.shuffle(v)
+
+	board = {k[i]: v[i] for i in range(len(k))}
+
+	print('========================')
+	print('initial state:')
 	print_board(board)
+	print('goal state:')
+	print_board(goal_state)
+	print('========================')
 
-	while True:
+	# board = {
+	# 	1: 1,
+	# 	2: 2,
+	# 	3: 3,
+	# 	4: 4,
+	# 	5: 5,
+	# 	6: 6,
+	# 	7: 7,
+	# 	8: ' ',
+	# 	9: 8
+	# }
+
+	while board != goal_state:
 		make_move(board)
+	print_board(board)
+	print('CONGRATULATIONS!!! you won!!')
 
-	
-    
 
 if __name__ == '__main__':
     main()
