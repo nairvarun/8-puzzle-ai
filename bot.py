@@ -1,7 +1,6 @@
 # todo:
 	# add proper ai part
 	# add readme
-	# find good license and add it
 
 # region imports
 import random
