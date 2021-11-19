@@ -20,7 +20,6 @@ def print_board(board):
 	print(b)
 
 # check whether the generated initial state is solvable.
-	# refer: https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
 def is_solvable(board):
 	val = list(board.values())
 	val.remove(' ')
