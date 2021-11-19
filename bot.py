@@ -19,7 +19,6 @@ def print_board(board):
 	''' % (board[1], board[2], board[3], board[4], board[5], board[6], board[7], board[8], board[9])
 	print(b)
 
-
 # check whether the generated initial state is solvable.
 def is_solvable(board):
 	val = list(board.values())
@@ -33,7 +32,6 @@ def is_solvable(board):
 		return True
 	else:
 		return False
-
 
 # returns list of valid moves.
 def get_valid_moves(board, empty_pos):
@@ -59,14 +57,12 @@ def get_valid_moves(board, empty_pos):
 		print('invalid move')
 		print_board(board)
 
-
 # returns a random move for the ai.
 def get_ai_move_random(board, empty_pos):
 	print_board(board)
 	valid_moves = get_valid_moves(board, empty_pos)
 	best_move = random.choice(valid_moves)
 	return best_move
-
 
 # returns the best move it finds using just a simple heuristic function for the ai.
 def get_ai_move_heuristic_func(board, goal_state, empty_pos):
@@ -98,7 +94,6 @@ def get_ai_move_heuristic_func(board, goal_state, empty_pos):
 	# print('final best_move:', best_move)
 	return best_move
 
-
 # returns the move that the human player wants to make if it is a valid move.
 def get_human_move(board, empty_pos):
 	print_board(board)
@@ -110,7 +105,6 @@ def get_human_move(board, empty_pos):
 		return move
 	else:
 		return None
-
 
 # makes move.
 def make_move(move, board, empty_pos):
@@ -124,7 +118,6 @@ def make_move(move, board, empty_pos):
 		board[empty_pos], board[empty_pos+1] = board[empty_pos+1], board[empty_pos]
 	else:
 		print("invalid move")
-
 
 # game loop.
 def start_game(board):
