@@ -1,5 +1,4 @@
 # todo:
-	# add proper ai part
 	# add readme
 	# is writing everything in a class the righ tthing to do??
 	# try with functional??
