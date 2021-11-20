@@ -4,6 +4,7 @@
 
 # region imports
 import random
+import math
 #endregion
 
 class Board:
@@ -27,17 +28,17 @@ class Board:
         while True:
             random.shuffle(val)
             Board.state = {key[i]: val[i] for i in range(len(key))}
-            # Board.state = {
-            #     1: 1,
-            #     2: 2,
-            #     3: 3,
-            #     4: 4,
-            #     5: 5,
-            #     6: 6,
-            #     7: 7,
-            #     8: ' ',
-            #     9: 8
-            # }
+            Board.state = {
+                1: 1,
+                2: 2,
+                3: 3,
+                4: 4,
+                5: 5,
+                6: 6,
+                7: 7,
+                8: ' ',
+                9: 8
+            }
             if Board.is_solvable():
                 break
         print('goal state:')
@@ -107,16 +108,16 @@ class Board:
         if mode == 'random':
             best_move = random.choice(valid_moves)
         elif mode == 'heuristic':
-            h = 0
-            best_h = 0
+            best_h = math.inf
             best_move = random.choice(valid_moves)
             for move in valid_moves:
+                h = 0
                 temp_board = Board.state.copy()
                 Board.make_move(temp_board, move, empty_pos)
                 for i in temp_board:
-                    if temp_board[i] == Board.goal_state[i]:
+                    if temp_board[i] != Board.goal_state[i]:
                         h += 1
-                if h > best_h:
+                if h < best_h:
                     best_h = h
                     best_move = move
 
