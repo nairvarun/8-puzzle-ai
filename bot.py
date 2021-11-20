@@ -1,10 +1,10 @@
 # todo:
 	# add proper ai part
 	# add readme
-    # is writing everything in a clss the righ tthing to do??
-    # try with functional??
-    # ad optimal ai (bfs?, a*?)
-        # http://w01fe.com/blog/2009/01/the-hardest-eight-puzzle-instances-take-31-moves-to-solve/
+	# is writing everything in a class the righ tthing to do??
+	# try with functional??
+	# ad optimal ai (bfs?, a*?)
+		# http://w01fe.com/blog/2009/01/the-hardest-eight-puzzle-instances-take-31-moves-to-solve/
         
   
 # region imports
