@@ -1,3 +1,4 @@
 .dump
 .vscode
 venv
+tst.py
