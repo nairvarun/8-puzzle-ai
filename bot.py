@@ -1,10 +1,8 @@
 # todo:
-	# add readme
-	# try with functional??
 	# ad optimal ai (bfs?, a*?)
 		# http://w01fe.com/blog/2009/01/the-hardest-eight-puzzle-instances-take-31-moves-to-solve/
-        
-  
+
+
 # region imports
 import random
 import math
@@ -62,10 +60,10 @@ class Board:
             ''' % (state[1], state[2], state[3], state[4], state[5], state[6], state[7], state[8], state[9])
         )
 
-    # checks if the board is solvable 
+    # checks if the board is solvable
         # refer: https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
     def is_solvable():
-        
+
         val = list(Board.state.values())
         val.remove(' ')
         invs = 0
@@ -175,7 +173,7 @@ class Board:
     # game loop
     def game_loop():
         Board.gen_init_state()
-    
+
         i = 0
         while Board.state != Board.goal_state:
             empty_pos = list(Board.state.keys())[list(Board.state.values()).index(' ')]
